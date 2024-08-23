@@ -14,7 +14,7 @@
 
 
 {ddd
-    "_dscbstub" = dscb0;
+    "_dscbstub" = dscb0;ddd
     data =     {
     };
    	//data为与前端约定好的参数ddd
