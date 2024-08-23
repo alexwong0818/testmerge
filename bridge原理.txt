@@ -10,10 +10,10 @@
 
 4. H5执行register，调用h5.call方法，传入(_dsb.dsinit).触发webview中的dsinit
 
-5. internalApis执行h5 init
+5. internalApis执行h5 initdddfff
 
 
-{
+{ddd
     "_dscbstub" = dscb0;
     data =     {
     };
