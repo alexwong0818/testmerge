@@ -1,0 +1,31 @@
+
+初始化： 原生向webview注入一段js标记代码，window._dswk=true;前端在调用bridge之前会判断window._dswk，为真则通过prompt()调用bridge。
+
+
+1. webview初始化 声明InternalApis到javaScriptNamespaceInterfaces key为_dsb，internalApis持有webview.用于向webview传递onMessage通知
+
+2. webviewVC初始化时主动调用WebViewJSCore.run(webView)。注册各种bridge方法。把注入对象存入javaScriptNamespaceInterfaces。key为spaceName, value为注入对象。
+
+3. WKUIDelegate中的runJavaScriptTextInputPanelWithPrompt会被调用。该方法由前端h5主动调用prompt() prompt("_dsbridge=" + method, arg);
+
+4. H5执行register，调用h5.call方法，传入(_dsb.dsinit).触发webview中的dsinit
+
+5. internalApis执行h5 init
+
+
+{
+    "_dscbstub" = dscb0;
+    data =     {
+    };
+   	//data为与前端约定好的参数
+}
+每次h5调用Bridge. 前端调用prompt() _dsbridge=utils.getDeviceInfo
+根据utils获取出注入对象。根据method去runtime列表中寻找两个方法。
+方法1. 参数列表==1
+方法2. 参数列表==2
+
+注入参数加_因为转oc会变成 getDeviceInfoWithArg:handler:
+
+
+h5提供5个方法
+call (method, args, cb)
