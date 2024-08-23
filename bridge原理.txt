@@ -14,10 +14,10 @@
 
 
 {ddd
-    "_dscbstub" = dscb0;
+    "_dscbstub" = dscb0;ddd
     data =     {
     };
-   	//data为与前端约定好的参数
+   	//data为与前端约定好的参数ddd
 }
 每次h5调用Bridge. 前端调用prompt() _dsbridge=utils.getDeviceInfo
 根据utils获取出注入对象。根据method去runtime列表中寻找两个方法。
